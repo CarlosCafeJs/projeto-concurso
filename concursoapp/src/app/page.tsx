@@ -1,9 +1,9 @@
-import QuestionsBox from '@/components/questionsbox';
+import VerticalLinearStepper from '@/components/sterpper';
 
 export default function Home() {
   return (
     <div className="">
-      <QuestionsBox />
+      <VerticalLinearStepper />
     </div>
   );
 }
