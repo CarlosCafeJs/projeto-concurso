@@ -1,4 +1,4 @@
-import VerticalLinearStepper from '@/components/sterpper';
+import VerticalLinearStepper from '@/components/stepper';
 
 export default function Home() {
   return (

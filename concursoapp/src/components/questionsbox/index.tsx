@@ -5,11 +5,11 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import RadioPositionEnd from '../selectoptions'; // Ajuste o caminho conforme sua estrutura
-import ButtonSizes from '../buttonsquestion'; // Ajuste o caminho conforme sua estrutura
+import RadioPositionEnd from '../selectoptions'; // Caminho ajustado conforme sua estrutura
+import ButtonSizes from '../buttonsquestion';     // Caminho ajustado conforme sua estrutura
 
 const bull = (
-  <Box component="span" sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }} >
+  <Box component="span" sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}>
     •
   </Box>
 );
@@ -23,16 +23,23 @@ type QuestionsBoxProps = {
   question: {
     nome: string;
     respostas: Resposta[];
-    resposta_correta: number; // ID da resposta correta
+    resposta_correta: number;
   };
   onNext: (userAnswer: number) => void;
   onBack: () => void;
   activeStep: number;
   totalSteps: number;
-  answered: boolean; // Adicionando a propriedade 'answered'
+  answered: boolean;
 };
 
-const QuestionsBox = ({ question, onNext, onBack, activeStep, totalSteps, answered }: QuestionsBoxProps) => {
+const QuestionsBox = ({
+  question,
+  onNext,
+  onBack,
+  activeStep,
+  totalSteps,
+  answered
+}: QuestionsBoxProps) => {
   const [selectedAnswer, setSelectedAnswer] = React.useState<number | null>(null);
 
   const handleAnswerSelected = (id: number) => {
@@ -41,7 +48,7 @@ const QuestionsBox = ({ question, onNext, onBack, activeStep, totalSteps, answer
 
   const handleNext = () => {
     if (selectedAnswer !== null) {
-      onNext(selectedAnswer); // Passa o ID da resposta selecionada
+      onNext(selectedAnswer);
     }
   };
 
@@ -67,9 +74,17 @@ const QuestionsBox = ({ question, onNext, onBack, activeStep, totalSteps, answer
 
         <RadioPositionEnd
           respostas={question.respostas}
-          onAnswerSelected={handleAnswerSelected} // Passa a função para o RadioPositionEnd
+          onAnswerSelected={handleAnswerSelected}
         />
-        <ButtonSizes onNext={handleNext} onBack={onBack} activeStep={activeStep} totalSteps={totalSteps} />
+
+        <ButtonSizes
+          onNext={handleNext}
+          onBack={onBack}
+          activeStep={activeStep}
+          totalSteps={totalSteps}
+          answered={answered}
+          selectedAnswer={selectedAnswer}
+        />
       </Card>
     </div>
   );
