@@ -1,12 +1,27 @@
 // src/pages/api/questions.ts
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+// Middleware para habilitar CORS
+function allowCors(fn: any) {
+  return async (req: NextApiRequest, res: NextApiResponse) => {
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Liberado para qualquer origem. Troque por domínio específico se quiser.
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    if (req.method === 'OPTIONS') {
+      res.status(200).end();
+      return;
+    }
+    return await fn(req, res);
+  }
+}
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const perguntas = [
     {
       id: 1,
       nome: 'Qual das alternativas abaixo representa uma condição necessária para um deadlock ocorrer?',
-      resposta: 1, // ID da resposta correta
+      resposta: 1,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'banco de dados',
@@ -23,7 +38,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 2,
       nome: 'Qual é a principal característica da técnica de normalização em banco de dados?',
-      resposta: 2, // ID da resposta correta
+      resposta: 2,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'banco de dados',
@@ -40,7 +55,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 3,
       nome: 'Em sistemas distribuídos, o que é necessário para evitar a condição de deadlock?',
-      resposta: 3, // ID da resposta correta
+      resposta: 3,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'sistemas distribuídos',
@@ -57,7 +72,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 4,
       nome: 'O que define a exclusão mútua em sistemas computacionais?',
-      resposta: 4, // ID da resposta correta
+      resposta: 4,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'sistemas operacionais',
@@ -74,7 +89,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 5,
       nome: 'O que é a normalização em banco de dados?',
-      resposta: 1, // ID da resposta correta
+      resposta: 1,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'banco de dados',
@@ -91,7 +106,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 6,
       nome: 'Em um banco de dados, qual o principal objetivo da 1ª Forma Normal (1NF)?',
-      resposta: 3, // ID da resposta correta
+      resposta: 3,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'banco de dados',
@@ -108,7 +123,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 7,
       nome: 'Qual é a definição de deadlock em sistemas operacionais?',
-      resposta: 2, // ID da resposta correta
+      resposta: 2,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'sistemas operacionais',
@@ -125,7 +140,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 8,
       nome: 'Qual a principal vantagem da normalização no design de banco de dados?',
-      resposta: 4, // ID da resposta correta
+      resposta: 4,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'banco de dados',
@@ -142,7 +157,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 9,
       nome: 'O que significa a condição de "posse e espera" em sistemas de concorrência?',
-      resposta: 5, // ID da resposta correta
+      resposta: 5,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'sistemas operacionais',
@@ -159,7 +174,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       id: 10,
       nome: 'Qual a definição de reentrância em sistemas operacionais?',
-      resposta: 1, // ID da resposta correta
+      resposta: 1,
       banca: 'Cesgranrio',
       ano: '2025',
       category: 'sistemas operacionais',
@@ -177,3 +192,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   res.status(200).json({ perguntas });
 }
+
+export default allowCors(handler);

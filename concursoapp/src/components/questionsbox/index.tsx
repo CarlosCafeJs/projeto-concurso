@@ -56,10 +56,12 @@ const QuestionsBox = ({
     <div className="flex h-screen w-full justify-center items-center">
       <Card
         sx={{
+          position: 'fixed',
+          top: '20%',
           width: { xs: '90%', sm: 500, md: 600, lg: 800 },
           minHeight: 400,
-          mx: 'auto',
-          mt: 4,
+
+
           p: 2,
         }}
       >

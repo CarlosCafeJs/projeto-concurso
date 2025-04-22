@@ -15,9 +15,9 @@ const VerticalLinearStepper = () => {
   const [questions, setQuestions] = React.useState<any[]>([]);
   const [answeredQuestions, setAnsweredQuestions] = React.useState<boolean[]>([]);
   const [score, setScore] = React.useState<number>(0);
-
+  // fetch('https://musical-space-meme-px7px579g4qfxjx-3000.app.github.dev/api/questions')
   React.useEffect(() => {
-    fetch('https://musical-space-meme-px7px579g4qfxjx-3000.app.github.dev/api/questions')
+    fetch('https://projeto-concurso.vercel.app/api/questions')
       .then((response) => response.json())
       .then((data) => setQuestions(data.perguntas));
   }, []);
@@ -46,7 +46,6 @@ const VerticalLinearStepper = () => {
   };
 
   const handleFinish = () => {
-    alert(`Você terminou! Sua pontuação é: ${score}/${questions.length}`);
     handleReset();
   };
 
@@ -54,41 +53,52 @@ const VerticalLinearStepper = () => {
     return <Typography sx={{ color: 'white' }}>Carregando...</Typography>;
   }
 
-  return (<div className='text-white bg-gradient-to-r from-blue-500 to-purple-500 min-h-screen flex items-center justify-center'>
+  return (
     <Box sx={{ maxWidth: 900, mx: 'auto', color: 'white' }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper sx={{ position: 'relative' }} activeStep={activeStep} orientation="vertical">
         {questions.map((question, index) => (
           <Step key={question.id}>
-            <StepLabel sx={{ color: 'white', '& .MuiStepLabel-label': { color: 'white' } }}>
+            <StepLabel
+              sx={{ color: 'white', '& .MuiStepLabel-label': { color: 'white' } }}
+            >
               {`Questão ${index + 1}`}
             </StepLabel>
-
             <StepContent>
-              <QuestionsBox
-                question={question}
-                onNext={handleNext}
-                onBack={handleBack}
-                activeStep={activeStep}
-                totalSteps={questions.length}
-                answered={answeredQuestions[activeStep] || false}
-              />
+              {/* Só renderiza QuestionsBox SE for a questão atual */}
+              {activeStep === index && (
+                <Box sx={{ mt: 2 }}>
+                  <QuestionsBox
+                    question={question} // <<< Aqui, passa o question certo!
+                    onNext={handleNext}
+                    onBack={handleBack}
+                    activeStep={activeStep}
+                    totalSteps={questions.length}
+                    answered={answeredQuestions[activeStep] || false}
+                  />
+                </Box>
+              )}
             </StepContent>
           </Step>
         ))}
       </Stepper>
 
       {activeStep === questions.length && (
-        <Paper square elevation={0} sx={{ p: 3, backgroundColor: 'transparent', color: 'white' }}>
+        <Paper
+          square
+          elevation={0}
+          sx={{ p: 3, backgroundColor: 'transparent', color: 'white' }}
+        >
           <Typography>Você finalizou todas as etapas!</Typography>
           <Box sx={{ mt: 2 }}>
-            <Typography sx={{ mb: 2 }}>Sua pontuação: {score}/{questions.length}</Typography>
+            <Typography sx={{ mb: 2 }}>
+              Sua pontuação: {score}/{questions.length}
+            </Typography>
             <button onClick={handleFinish}>Finalizar</button>
             <button onClick={handleReset}>Reiniciar</button>
           </Box>
         </Paper>
       )}
     </Box>
-  </div>
   );
 };
 
