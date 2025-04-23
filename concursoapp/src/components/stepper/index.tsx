@@ -17,7 +17,7 @@ const VerticalLinearStepper = () => {
   const [score, setScore] = React.useState<number>(0);
   // fetch('https://musical-space-meme-px7px579g4qfxjx-3000.app.github.dev/api/questions')
   React.useEffect(() => {
-    fetch('https://concursoapp-a0xwev0cr-carloscafejs-projects.vercel.app/api/questions')
+    fetch('https://concursoapp-carloscafejs-carloscafejs-projects.vercel.app/api/questions')
       .then((response) => response.json())
       .then((data) => setQuestions(data.perguntas));
   }, []);
