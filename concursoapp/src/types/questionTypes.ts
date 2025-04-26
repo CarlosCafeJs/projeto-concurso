@@ -11,8 +11,8 @@ export type Comentario = {
   comentario: string;
 };
 
+// types.ts
 export type Questao = {
-  id: number;
   enunciado: string;
   alternativas: Alternativa[];
   assunto: string;
@@ -20,7 +20,7 @@ export type Questao = {
   referencia: string;
   explicacao: string;
   tags: string[];
-  data_criacao: string;
+  data_criacao: Date;// Alterado de string para Date
   origem: string;
   categoria_concurso: string;
   peso: number;

@@ -1,11 +1,6 @@
-
 generator client {
-  provider      = "prisma-client-js"
-  output        = "../src/app/generated/prisma"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  provider = "prisma-client-js"
 }
-
-
 
 datasource db {
   provider = "postgresql"
@@ -13,36 +8,36 @@ datasource db {
 }
 
 model Questao {
-  id                         Int           @id
+  id                         Int        @id @default(autoincrement())
   enunciado                  String
   assunto                    String
   nivel_dificuldade          String
   referencia                 String
   explicacao                 String
-  tags                       String[]
-  data_criacao               String
+  tags                       String[]   // Array de strings está correto
+  data_criacao               DateTime   @default(now())  // Data padrão com o valor atual
   origem                     String
   categoria_concurso         String
   peso                       Int
   categoria_assunto          String
-  tempo_resposta_estipulado String
+  tempo_resposta_estipulado  String
   alternativas               Alternativa[]
   comentarios                Comentario[]
 }
 
 model Alternativa {
-  id         Int     @id @default(autoincrement())
-  resposta   String
-  correta    Boolean
-  questaoId  Int
-  questao    Questao @relation(fields: [questaoId], references: [id])
+  id        Int     @id @default(autoincrement())
+  resposta  String
+  correta   Boolean
+  questaoId Int
+  questao   Questao @relation(fields: [questaoId], references: [id], onDelete: Cascade)
 }
 
 model Comentario {
-  id             Int     @id @default(autoincrement())
-  usuario        String
-  data_comentario String
-  comentario     String
-  questaoId      Int
-  questao        Questao @relation(fields: [questaoId], references: [id])
+  id              Int      @id @default(autoincrement())
+  usuario         String
+  data_comentario DateTime
+  comentario      String
+  questaoId       Int
+  questao         Questao  @relation(fields: [questaoId], references: [id], onDelete: Cascade)
 }

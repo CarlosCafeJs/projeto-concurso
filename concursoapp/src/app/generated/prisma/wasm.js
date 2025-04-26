@@ -148,6 +148,12 @@ exports.Prisma.ComentarioScalarFieldEnum = {
   questaoId: 'questaoId'
 };
 
+exports.Prisma.QuestionScalarFieldEnum = {
+  id: 'id',
+  conteudo: 'conteudo',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -162,7 +168,8 @@ exports.Prisma.QueryMode = {
 exports.Prisma.ModelName = {
   Questao: 'Questao',
   Alternativa: 'Alternativa',
-  Comentario: 'Comentario'
+  Comentario: 'Comentario',
+  Question: 'Question'
 };
 
 /**
