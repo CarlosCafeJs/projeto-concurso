@@ -1,12 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/app/generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "../src/app/generated/prisma"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
@@ -15,22 +10,21 @@ datasource db {
 }
 
 model Questao {
-  id                        Int      @id @default(autoincrement())
+  id                        Int           @id
   enunciado                 String
   assunto                   String
   nivel_dificuldade         String
   referencia                String
   explicacao                String
-  tags                      String[] // Armazenado como array de strings
-  data_criacao              DateTime
+  tags                      String[]
+  data_criacao              String
   origem                    String
   categoria_concurso        String
   peso                      Int
   categoria_assunto         String
   tempo_resposta_estipulado String
-
-  alternativas Alternativa[]
-  comentarios  Comentario[]
+  alternativas              Alternativa[]
+  comentarios               Comentario[]
 }
 
 model Alternativa {
@@ -42,10 +36,10 @@ model Alternativa {
 }
 
 model Comentario {
-  id              Int      @id @default(autoincrement())
+  id              Int     @id @default(autoincrement())
   usuario         String
-  data_comentario DateTime
+  data_comentario String
   comentario      String
   questaoId       Int
-  questao         Questao  @relation(fields: [questaoId], references: [id])
+  questao         Questao @relation(fields: [questaoId], references: [id])
 }

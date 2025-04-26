@@ -1119,7 +1119,7 @@ export namespace Prisma {
     nivel_dificuldade: string | null
     referencia: string | null
     explicacao: string | null
-    data_criacao: Date | null
+    data_criacao: string | null
     origem: string | null
     categoria_concurso: string | null
     peso: number | null
@@ -1134,7 +1134,7 @@ export namespace Prisma {
     nivel_dificuldade: string | null
     referencia: string | null
     explicacao: string | null
-    data_criacao: Date | null
+    data_criacao: string | null
     origem: string | null
     categoria_concurso: string | null
     peso: number | null
@@ -1311,7 +1311,7 @@ export namespace Prisma {
     referencia: string
     explicacao: string
     tags: string[]
-    data_criacao: Date
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -1428,7 +1428,7 @@ export namespace Prisma {
       referencia: string
       explicacao: string
       tags: string[]
-      data_criacao: Date
+      data_criacao: string
       origem: string
       categoria_concurso: string
       peso: number
@@ -1866,7 +1866,7 @@ export namespace Prisma {
     readonly referencia: FieldRef<"Questao", 'String'>
     readonly explicacao: FieldRef<"Questao", 'String'>
     readonly tags: FieldRef<"Questao", 'String[]'>
-    readonly data_criacao: FieldRef<"Questao", 'DateTime'>
+    readonly data_criacao: FieldRef<"Questao", 'String'>
     readonly origem: FieldRef<"Questao", 'String'>
     readonly categoria_concurso: FieldRef<"Questao", 'String'>
     readonly peso: FieldRef<"Questao", 'Int'>
@@ -3434,7 +3434,7 @@ export namespace Prisma {
   export type ComentarioMinAggregateOutputType = {
     id: number | null
     usuario: string | null
-    data_comentario: Date | null
+    data_comentario: string | null
     comentario: string | null
     questaoId: number | null
   }
@@ -3442,7 +3442,7 @@ export namespace Prisma {
   export type ComentarioMaxAggregateOutputType = {
     id: number | null
     usuario: string | null
-    data_comentario: Date | null
+    data_comentario: string | null
     comentario: string | null
     questaoId: number | null
   }
@@ -3581,7 +3581,7 @@ export namespace Prisma {
   export type ComentarioGroupByOutputType = {
     id: number
     usuario: string
-    data_comentario: Date
+    data_comentario: string
     comentario: string
     questaoId: number
     _count: ComentarioCountAggregateOutputType | null
@@ -3659,7 +3659,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       usuario: string
-      data_comentario: Date
+      data_comentario: string
       comentario: string
       questaoId: number
     }, ExtArgs["result"]["comentario"]>
@@ -4088,7 +4088,7 @@ export namespace Prisma {
   interface ComentarioFieldRefs {
     readonly id: FieldRef<"Comentario", 'Int'>
     readonly usuario: FieldRef<"Comentario", 'String'>
-    readonly data_comentario: FieldRef<"Comentario", 'DateTime'>
+    readonly data_comentario: FieldRef<"Comentario", 'String'>
     readonly comentario: FieldRef<"Comentario", 'String'>
     readonly questaoId: FieldRef<"Comentario", 'Int'>
   }
@@ -4609,20 +4609,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -4657,7 +4643,7 @@ export namespace Prisma {
     referencia?: StringFilter<"Questao"> | string
     explicacao?: StringFilter<"Questao"> | string
     tags?: StringNullableListFilter<"Questao">
-    data_criacao?: DateTimeFilter<"Questao"> | Date | string
+    data_criacao?: StringFilter<"Questao"> | string
     origem?: StringFilter<"Questao"> | string
     categoria_concurso?: StringFilter<"Questao"> | string
     peso?: IntFilter<"Questao"> | number
@@ -4696,7 +4682,7 @@ export namespace Prisma {
     referencia?: StringFilter<"Questao"> | string
     explicacao?: StringFilter<"Questao"> | string
     tags?: StringNullableListFilter<"Questao">
-    data_criacao?: DateTimeFilter<"Questao"> | Date | string
+    data_criacao?: StringFilter<"Questao"> | string
     origem?: StringFilter<"Questao"> | string
     categoria_concurso?: StringFilter<"Questao"> | string
     peso?: IntFilter<"Questao"> | number
@@ -4738,7 +4724,7 @@ export namespace Prisma {
     referencia?: StringWithAggregatesFilter<"Questao"> | string
     explicacao?: StringWithAggregatesFilter<"Questao"> | string
     tags?: StringNullableListFilter<"Questao">
-    data_criacao?: DateTimeWithAggregatesFilter<"Questao"> | Date | string
+    data_criacao?: StringWithAggregatesFilter<"Questao"> | string
     origem?: StringWithAggregatesFilter<"Questao"> | string
     categoria_concurso?: StringWithAggregatesFilter<"Questao"> | string
     peso?: IntWithAggregatesFilter<"Questao"> | number
@@ -4804,7 +4790,7 @@ export namespace Prisma {
     NOT?: ComentarioWhereInput | ComentarioWhereInput[]
     id?: IntFilter<"Comentario"> | number
     usuario?: StringFilter<"Comentario"> | string
-    data_comentario?: DateTimeFilter<"Comentario"> | Date | string
+    data_comentario?: StringFilter<"Comentario"> | string
     comentario?: StringFilter<"Comentario"> | string
     questaoId?: IntFilter<"Comentario"> | number
     questao?: XOR<QuestaoScalarRelationFilter, QuestaoWhereInput>
@@ -4825,7 +4811,7 @@ export namespace Prisma {
     OR?: ComentarioWhereInput[]
     NOT?: ComentarioWhereInput | ComentarioWhereInput[]
     usuario?: StringFilter<"Comentario"> | string
-    data_comentario?: DateTimeFilter<"Comentario"> | Date | string
+    data_comentario?: StringFilter<"Comentario"> | string
     comentario?: StringFilter<"Comentario"> | string
     questaoId?: IntFilter<"Comentario"> | number
     questao?: XOR<QuestaoScalarRelationFilter, QuestaoWhereInput>
@@ -4850,19 +4836,20 @@ export namespace Prisma {
     NOT?: ComentarioScalarWhereWithAggregatesInput | ComentarioScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Comentario"> | number
     usuario?: StringWithAggregatesFilter<"Comentario"> | string
-    data_comentario?: DateTimeWithAggregatesFilter<"Comentario"> | Date | string
+    data_comentario?: StringWithAggregatesFilter<"Comentario"> | string
     comentario?: StringWithAggregatesFilter<"Comentario"> | string
     questaoId?: IntWithAggregatesFilter<"Comentario"> | number
   }
 
   export type QuestaoCreateInput = {
+    id: number
     enunciado: string
     assunto: string
     nivel_dificuldade: string
     referencia: string
     explicacao: string
     tags?: QuestaoCreatetagsInput | string[]
-    data_criacao: Date | string
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -4873,14 +4860,14 @@ export namespace Prisma {
   }
 
   export type QuestaoUncheckedCreateInput = {
-    id?: number
+    id: number
     enunciado: string
     assunto: string
     nivel_dificuldade: string
     referencia: string
     explicacao: string
     tags?: QuestaoCreatetagsInput | string[]
-    data_criacao: Date | string
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -4891,13 +4878,14 @@ export namespace Prisma {
   }
 
   export type QuestaoUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     enunciado?: StringFieldUpdateOperationsInput | string
     assunto?: StringFieldUpdateOperationsInput | string
     nivel_dificuldade?: StringFieldUpdateOperationsInput | string
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -4915,7 +4903,7 @@ export namespace Prisma {
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -4926,14 +4914,14 @@ export namespace Prisma {
   }
 
   export type QuestaoCreateManyInput = {
-    id?: number
+    id: number
     enunciado: string
     assunto: string
     nivel_dificuldade: string
     referencia: string
     explicacao: string
     tags?: QuestaoCreatetagsInput | string[]
-    data_criacao: Date | string
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -4942,13 +4930,14 @@ export namespace Prisma {
   }
 
   export type QuestaoUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     enunciado?: StringFieldUpdateOperationsInput | string
     assunto?: StringFieldUpdateOperationsInput | string
     nivel_dificuldade?: StringFieldUpdateOperationsInput | string
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -4964,7 +4953,7 @@ export namespace Prisma {
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -5019,7 +5008,7 @@ export namespace Prisma {
 
   export type ComentarioCreateInput = {
     usuario: string
-    data_comentario: Date | string
+    data_comentario: string
     comentario: string
     questao: QuestaoCreateNestedOneWithoutComentariosInput
   }
@@ -5027,14 +5016,14 @@ export namespace Prisma {
   export type ComentarioUncheckedCreateInput = {
     id?: number
     usuario: string
-    data_comentario: Date | string
+    data_comentario: string
     comentario: string
     questaoId: number
   }
 
   export type ComentarioUpdateInput = {
     usuario?: StringFieldUpdateOperationsInput | string
-    data_comentario?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_comentario?: StringFieldUpdateOperationsInput | string
     comentario?: StringFieldUpdateOperationsInput | string
     questao?: QuestaoUpdateOneRequiredWithoutComentariosNestedInput
   }
@@ -5042,7 +5031,7 @@ export namespace Prisma {
   export type ComentarioUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     usuario?: StringFieldUpdateOperationsInput | string
-    data_comentario?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_comentario?: StringFieldUpdateOperationsInput | string
     comentario?: StringFieldUpdateOperationsInput | string
     questaoId?: IntFieldUpdateOperationsInput | number
   }
@@ -5050,21 +5039,21 @@ export namespace Prisma {
   export type ComentarioCreateManyInput = {
     id?: number
     usuario: string
-    data_comentario: Date | string
+    data_comentario: string
     comentario: string
     questaoId: number
   }
 
   export type ComentarioUpdateManyMutationInput = {
     usuario?: StringFieldUpdateOperationsInput | string
-    data_comentario?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_comentario?: StringFieldUpdateOperationsInput | string
     comentario?: StringFieldUpdateOperationsInput | string
   }
 
   export type ComentarioUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     usuario?: StringFieldUpdateOperationsInput | string
-    data_comentario?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_comentario?: StringFieldUpdateOperationsInput | string
     comentario?: StringFieldUpdateOperationsInput | string
     questaoId?: IntFieldUpdateOperationsInput | number
   }
@@ -5101,17 +5090,6 @@ export namespace Prisma {
     hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
     hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
     isEmpty?: boolean
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type AlternativaListRelationFilter = {
@@ -5222,20 +5200,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -5353,6 +5317,14 @@ export namespace Prisma {
     connect?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -5360,18 +5332,6 @@ export namespace Prisma {
   export type QuestaoUpdatetagsInput = {
     set?: string[]
     push?: string | string[]
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type AlternativaUpdateManyWithoutQuestaoNestedInput = {
@@ -5487,17 +5447,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5542,20 +5491,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -5592,14 +5527,14 @@ export namespace Prisma {
 
   export type ComentarioCreateWithoutQuestaoInput = {
     usuario: string
-    data_comentario: Date | string
+    data_comentario: string
     comentario: string
   }
 
   export type ComentarioUncheckedCreateWithoutQuestaoInput = {
     id?: number
     usuario: string
-    data_comentario: Date | string
+    data_comentario: string
     comentario: string
   }
 
@@ -5661,19 +5596,20 @@ export namespace Prisma {
     NOT?: ComentarioScalarWhereInput | ComentarioScalarWhereInput[]
     id?: IntFilter<"Comentario"> | number
     usuario?: StringFilter<"Comentario"> | string
-    data_comentario?: DateTimeFilter<"Comentario"> | Date | string
+    data_comentario?: StringFilter<"Comentario"> | string
     comentario?: StringFilter<"Comentario"> | string
     questaoId?: IntFilter<"Comentario"> | number
   }
 
   export type QuestaoCreateWithoutAlternativasInput = {
+    id: number
     enunciado: string
     assunto: string
     nivel_dificuldade: string
     referencia: string
     explicacao: string
     tags?: QuestaoCreatetagsInput | string[]
-    data_criacao: Date | string
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -5683,14 +5619,14 @@ export namespace Prisma {
   }
 
   export type QuestaoUncheckedCreateWithoutAlternativasInput = {
-    id?: number
+    id: number
     enunciado: string
     assunto: string
     nivel_dificuldade: string
     referencia: string
     explicacao: string
     tags?: QuestaoCreatetagsInput | string[]
-    data_criacao: Date | string
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -5716,13 +5652,14 @@ export namespace Prisma {
   }
 
   export type QuestaoUpdateWithoutAlternativasInput = {
+    id?: IntFieldUpdateOperationsInput | number
     enunciado?: StringFieldUpdateOperationsInput | string
     assunto?: StringFieldUpdateOperationsInput | string
     nivel_dificuldade?: StringFieldUpdateOperationsInput | string
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -5739,7 +5676,7 @@ export namespace Prisma {
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -5749,13 +5686,14 @@ export namespace Prisma {
   }
 
   export type QuestaoCreateWithoutComentariosInput = {
+    id: number
     enunciado: string
     assunto: string
     nivel_dificuldade: string
     referencia: string
     explicacao: string
     tags?: QuestaoCreatetagsInput | string[]
-    data_criacao: Date | string
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -5765,14 +5703,14 @@ export namespace Prisma {
   }
 
   export type QuestaoUncheckedCreateWithoutComentariosInput = {
-    id?: number
+    id: number
     enunciado: string
     assunto: string
     nivel_dificuldade: string
     referencia: string
     explicacao: string
     tags?: QuestaoCreatetagsInput | string[]
-    data_criacao: Date | string
+    data_criacao: string
     origem: string
     categoria_concurso: string
     peso: number
@@ -5798,13 +5736,14 @@ export namespace Prisma {
   }
 
   export type QuestaoUpdateWithoutComentariosInput = {
+    id?: IntFieldUpdateOperationsInput | number
     enunciado?: StringFieldUpdateOperationsInput | string
     assunto?: StringFieldUpdateOperationsInput | string
     nivel_dificuldade?: StringFieldUpdateOperationsInput | string
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -5821,7 +5760,7 @@ export namespace Prisma {
     referencia?: StringFieldUpdateOperationsInput | string
     explicacao?: StringFieldUpdateOperationsInput | string
     tags?: QuestaoUpdatetagsInput | string[]
-    data_criacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_criacao?: StringFieldUpdateOperationsInput | string
     origem?: StringFieldUpdateOperationsInput | string
     categoria_concurso?: StringFieldUpdateOperationsInput | string
     peso?: IntFieldUpdateOperationsInput | number
@@ -5839,7 +5778,7 @@ export namespace Prisma {
   export type ComentarioCreateManyQuestaoInput = {
     id?: number
     usuario: string
-    data_comentario: Date | string
+    data_comentario: string
     comentario: string
   }
 
@@ -5862,21 +5801,21 @@ export namespace Prisma {
 
   export type ComentarioUpdateWithoutQuestaoInput = {
     usuario?: StringFieldUpdateOperationsInput | string
-    data_comentario?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_comentario?: StringFieldUpdateOperationsInput | string
     comentario?: StringFieldUpdateOperationsInput | string
   }
 
   export type ComentarioUncheckedUpdateWithoutQuestaoInput = {
     id?: IntFieldUpdateOperationsInput | number
     usuario?: StringFieldUpdateOperationsInput | string
-    data_comentario?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_comentario?: StringFieldUpdateOperationsInput | string
     comentario?: StringFieldUpdateOperationsInput | string
   }
 
   export type ComentarioUncheckedUpdateManyWithoutQuestaoInput = {
     id?: IntFieldUpdateOperationsInput | number
     usuario?: StringFieldUpdateOperationsInput | string
-    data_comentario?: DateTimeFieldUpdateOperationsInput | Date | string
+    data_comentario?: StringFieldUpdateOperationsInput | string
     comentario?: StringFieldUpdateOperationsInput | string
   }
 
