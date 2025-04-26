@@ -1,0 +1,34 @@
+model Questao {
+  id                         Int           @id
+  enunciado                  String
+  assunto                    String
+  nivel_dificuldade          String
+  referencia                 String
+  explicacao                 String
+  tags                       String[]
+  data_criacao               String
+  origem                     String
+  categoria_concurso         String
+  peso                       Int
+  categoria_assunto          String
+  tempo_resposta_estipulado String
+  alternativas               Alternativa[]
+  comentarios                Comentario[]
+}
+
+model Alternativa {
+  id         Int     @id @default(autoincrement())
+  resposta   String
+  correta    Boolean
+  questaoId  Int
+  questao    Questao @relation(fields: [questaoId], references: [id])
+}
+
+model Comentario {
+  id             Int     @id @default(autoincrement())
+  usuario        String
+  data_comentario String
+  comentario     String
+  questaoId      Int
+  questao        Questao @relation(fields: [questaoId], references: [id])
+}
